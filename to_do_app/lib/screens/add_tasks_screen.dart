@@ -19,8 +19,8 @@ class AddTasksScreen extends StatelessWidget {
             horizontal: 25.0,
           ),
           decoration: BoxDecoration(
-            // color: Color(0xff1d4c3d).withOpacity(0.7),
-            color: Colors.white.withOpacity(0.1),
+            color: Color(0xff1d4c3d).withOpacity(0.8),
+            // color: Colors.white.withOpacity(0.1),
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(20.0),
               topRight: Radius.circular(20.0),
@@ -59,7 +59,7 @@ class AddTasksScreen extends StatelessWidget {
                 sliderButtonContent: Icon(Icons.arrow_forward),
                 backgroundColorEnd: Color(0xffd0f388),
                 foregroundColor: Color(0xffa4fc7a),
-                text: 'Confirm',
+                text: 'Create',
                 textStyle: TextStyle(
                   color: Colors.white,
                 ),
