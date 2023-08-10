@@ -34,6 +34,13 @@ class AddTasksScreen extends StatelessWidget {
                 'Add Task',
                 textAlign: TextAlign.center,
                 style: TextStyle(
+                  shadows: [
+                    Shadow(
+                      blurRadius: 8.0, // shadow blur
+                      color: Color(0xffc6e871), // shadow color
+                      offset: Offset(2.0, 2.0),
+                    ),
+                  ],
                   color: Colors.white,
                   fontSize: 40.0,
                   fontWeight: FontWeight.w700,
@@ -43,7 +50,7 @@ class AddTasksScreen extends StatelessWidget {
                 height: 30.0,
               ),
               Text(
-                'Priority',
+                'PRIORITY',
                 style: TextStyle(
                   fontSize: 15.0,
                   fontWeight: FontWeight.bold,
