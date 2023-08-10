@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:slide_to_confirm/slide_to_confirm.dart';
+import 'package:toggle_switch/toggle_switch.dart';
 
 class AddTasksScreen extends StatelessWidget {
   const AddTasksScreen({Key? key}) : super(key: key);
@@ -27,16 +28,90 @@ class AddTasksScreen extends StatelessWidget {
             ),
           ),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
+            // crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Text(
                 'Add Task',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 30.0,
+                  fontSize: 40.0,
                   fontWeight: FontWeight.w700,
                 ),
+              ),
+              SizedBox(
+                height: 30.0,
+              ),
+              // Row(
+              //   mainAxisAlignment: MainAxisAlignment.center,
+              //   children: [
+              //     Text(
+              //       'Priority : ',
+              //       style: TextStyle(
+              //         fontSize: 20.0,
+              //         fontWeight: FontWeight.bold,
+              //         color: Colors.white,
+              //       ),
+              //     ),
+              //     SizedBox(
+              //       width: 10.0,
+              //     ),
+              //     ToggleSwitch(
+              //       minWidth: 90.0,
+              //       cornerRadius: 25.0,
+              //       activeBgColors: [
+              //         [Colors.red[400]!],
+              //         [Colors.green[500]!]
+              //       ],
+              //       activeFgColor: Colors.white,
+              //       inactiveBgColor: Color(0xff5a5a5a),
+              //       inactiveFgColor: Colors.white,
+              //       initialLabelIndex: 1,
+              //       totalSwitches: 2,
+              //       labels: ['HIGH', 'LOW'],
+              //       radiusStyle: true,
+              //       onToggle: (index) {},
+              //     ),
+              //   ],
+              // ),
+              Text(
+                'Priority',
+                style: TextStyle(
+                  fontSize: 15.0,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+              SizedBox(
+                height: 10.0,
+              ),
+              ToggleSwitch(
+                minWidth: 90.0,
+                cornerRadius: 25.0,
+                activeBgColors: [
+                  [Color(0xffc6e871)],
+                  [Color(0xffc6e871)]
+                ],
+                activeFgColor: Colors.white,
+                inactiveBgColor: Colors.grey[500],
+                inactiveFgColor: Colors.white,
+                initialLabelIndex: 1,
+                borderWidth: 4.0,
+                borderColor: [Color(0xff9e9e9e)],
+                totalSwitches: 2,
+                labels: ['HIGH', 'LOW'],
+                customTextStyles: [
+                  TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 15.0,
+                    color: Colors.black,
+                  ),
+                ],
+                radiusStyle: true,
+                onToggle: (index) {},
+              ),
+              SizedBox(
+                height: 20.0,
               ),
               TextField(
                 autofocus: true,
