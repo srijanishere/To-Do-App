@@ -86,23 +86,28 @@ class AddTasksScreen extends StatelessWidget {
                 onToggle: (index) {},
               ),
               SizedBox(
-                height: 20.0,
+                height: 40.0,
               ),
               TextField(
-                autofocus: true,
+                autofocus: false,
                 textAlign: TextAlign.center,
-                cursorColor: Colors.white,
+                cursorColor: Colors.black,
+                maxLines: 2,
                 decoration: InputDecoration(
-                  enabledBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: Colors.white),
-                  ),
-                  focusedBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: Colors.white),
-                  ),
+                  filled: true,
+                  hintText: "What's your task ?",
+                  fillColor: Color(0xffc0d59e),
+                  border: OutlineInputBorder(
+                      borderSide: BorderSide.none,
+                      borderRadius: BorderRadius.circular(15)),
                 ),
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20.0,
+                ),
               ),
-              SizedBox(height: 20.0),
+              SizedBox(height: 30.0),
               ConfirmationSlider(
                 onConfirmation: () {},
                 backgroundColor: Color(0xff5a5a5a),
