@@ -42,38 +42,6 @@ class AddTasksScreen extends StatelessWidget {
               SizedBox(
                 height: 30.0,
               ),
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.center,
-              //   children: [
-              //     Text(
-              //       'Priority : ',
-              //       style: TextStyle(
-              //         fontSize: 20.0,
-              //         fontWeight: FontWeight.bold,
-              //         color: Colors.white,
-              //       ),
-              //     ),
-              //     SizedBox(
-              //       width: 10.0,
-              //     ),
-              //     ToggleSwitch(
-              //       minWidth: 90.0,
-              //       cornerRadius: 25.0,
-              //       activeBgColors: [
-              //         [Colors.red[400]!],
-              //         [Colors.green[500]!]
-              //       ],
-              //       activeFgColor: Colors.white,
-              //       inactiveBgColor: Color(0xff5a5a5a),
-              //       inactiveFgColor: Colors.white,
-              //       initialLabelIndex: 1,
-              //       totalSwitches: 2,
-              //       labels: ['HIGH', 'LOW'],
-              //       radiusStyle: true,
-              //       onToggle: (index) {},
-              //     ),
-              //   ],
-              // ),
               Text(
                 'Priority',
                 style: TextStyle(
