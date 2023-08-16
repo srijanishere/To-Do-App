@@ -16,30 +16,6 @@ class _TasksScreenState extends State<TasksScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xff1d4c3d),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          //will allow us to create a new task
-          showModalBottomSheet(
-            context: context,
-            builder: (context) => SingleChildScrollView(
-              child: Container(
-                padding: EdgeInsets.only(
-                    bottom: MediaQuery.of(context).viewInsets.bottom),
-                child: AddTasksScreen((newTaskTitle, taskPriority) {
-                  setState(() {
-                    tasks.add(
-                        Task(taskName: newTaskTitle, priority: taskPriority));
-                  });
-                  Navigator.pop(context);
-                }),
-              ),
-            ),
-            // isScrollControlled: true, //to make the modal occupy the full screen
-          );
-        },
-        backgroundColor: Color(0xff1d4c3d),
-        child: Icon(Icons.add),
-      ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -61,13 +37,48 @@ class _TasksScreenState extends State<TasksScreen> {
                 SizedBox(
                   height: 15.0,
                 ),
-                Text(
-                  'Tasks',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 50.0,
-                    fontWeight: FontWeight.w700,
-                  ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Tasks',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 50.0,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    FloatingActionButton(
+                      onPressed: () {
+                        //will allow us to create a new task
+                        showModalBottomSheet(
+                          context: context,
+                          builder: (context) => SingleChildScrollView(
+                            child: Container(
+                              padding: EdgeInsets.only(
+                                  bottom:
+                                      MediaQuery.of(context).viewInsets.bottom),
+                              child:
+                                  AddTasksScreen((newTaskTitle, taskPriority) {
+                                setState(() {
+                                  tasks.add(Task(
+                                      taskName: newTaskTitle,
+                                      priority: taskPriority));
+                                });
+                                Navigator.pop(context);
+                              }),
+                            ),
+                          ),
+                          // isScrollControlled: true, //to make the modal occupy the full screen
+                        );
+                      },
+                      backgroundColor: Colors.white,
+                      child: Icon(
+                        Icons.add,
+                        color: Color(0xff1d4c3d),
+                      ),
+                    ),
+                  ],
                 ),
                 SizedBox(
                   height: 5.0,
