@@ -91,7 +91,7 @@ class AddTasksScreen extends StatelessWidget {
                 ],
                 radiusStyle: true,
                 onToggle: (index) {
-                  print(index);
+                  // print(index);
                   priority = index;
                 },
               ),

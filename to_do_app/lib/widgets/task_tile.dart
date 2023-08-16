@@ -23,12 +23,15 @@ class TaskTile extends StatelessWidget {
     return ListTile(
       title: Container(
         decoration: BoxDecoration(
-            color: Color(0xff1d4c3d).withOpacity(0.15),
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(10.0),
-              bottomRight: Radius.circular(10.0),
+            boxShadow: [
+              //BoxShadow
+            ],
+            color: Colors.black,
+            borderRadius: BorderRadius.all(
+              Radius.circular(10.0),
             )),
         padding: EdgeInsets.all(15.0),
+        margin: EdgeInsets.all(3.0),
         child: Row(
           children: [
             Icon(
@@ -41,7 +44,8 @@ class TaskTile extends StatelessWidget {
             Text(
               taskTitle,
               style: TextStyle(
-                fontWeight: FontWeight.w600,
+                color: Colors.white,
+                fontWeight: FontWeight.w500,
                 fontSize: 20.0,
                 decoration: (isChecked) ? TextDecoration.lineThrough : null,
               ),
