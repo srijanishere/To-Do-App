@@ -77,7 +77,7 @@ class AddTasksScreen extends StatelessWidget {
                 activeFgColor: Colors.white,
                 inactiveBgColor: Colors.grey[500],
                 inactiveFgColor: Colors.white,
-                initialLabelIndex: 1,
+                initialLabelIndex: -1,
                 borderWidth: 4.0,
                 borderColor: [Color(0xff9e9e9e)],
                 totalSwitches: 2,
@@ -123,7 +123,12 @@ class AddTasksScreen extends StatelessWidget {
               SizedBox(height: 30.0),
               ConfirmationSlider(
                 onConfirmation: () {
-                  addTaskCallback(newTaskTitle, priority);
+                  if (newTaskTitle == null) {
+                    Navigator.pop(context);
+                  } else {
+                    addTaskCallback(newTaskTitle, priority);
+                    // Navigator.pop(context);
+                  }
                 },
                 backgroundColor: Color(0xff5a5a5a),
                 sliderButtonContent: Icon(Icons.arrow_forward),

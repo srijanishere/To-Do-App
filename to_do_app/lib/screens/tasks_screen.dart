@@ -9,11 +9,7 @@ class TasksScreen extends StatefulWidget {
 }
 
 class _TasksScreenState extends State<TasksScreen> {
-  List<Task> tasks = [
-    Task(taskName: 'Buy Milk', priority: 0),
-    Task(taskName: 'Buy Sugar', priority: 1),
-    Task(taskName: 'Buy Tea', priority: 1),
-  ];
+  List<Task> tasks = [];
 
   // Widget buildBottomSheet(BuildContext context) {
   @override
@@ -34,6 +30,7 @@ class _TasksScreenState extends State<TasksScreen> {
                     tasks.add(
                         Task(taskName: newTaskTitle, priority: taskPriority));
                   });
+                  Navigator.pop(context);
                 }),
               ),
             ),
@@ -76,7 +73,7 @@ class _TasksScreenState extends State<TasksScreen> {
                   height: 5.0,
                 ),
                 Text(
-                  '15 Incomplete Tasks',
+                  "${tasks.length} Incomplete Tasks",
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 18.0,
@@ -105,7 +102,18 @@ class _TasksScreenState extends State<TasksScreen> {
                   topRight: Radius.circular(20.0),
                 ),
               ),
-              child: TasksList(tasks: tasks),
+              child: (tasks.length == 0)
+                  ? Center(
+                      child: Text(
+                        'NO TASKS YET',
+                        style: TextStyle(
+                          fontSize: 24.0,
+                          fontWeight: FontWeight.w900,
+                          color: Color(0xff1d4c3d),
+                        ),
+                      ),
+                    )
+                  : TasksList(tasks: tasks),
             ),
           ),
         ],
