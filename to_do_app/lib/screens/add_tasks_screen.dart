@@ -4,13 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:slide_to_confirm/slide_to_confirm.dart';
 import 'package:to_do_app/screens/tasks_screen.dart';
 import 'package:toggle_switch/toggle_switch.dart';
-import 'package:to_do_app/models/task.dart';
+import 'package:provider/provider.dart';
+import 'package:to_do_app/models/task_data.dart';
 
 class AddTasksScreen extends StatelessWidget {
-  final Function addTaskCallback;
-
-  AddTasksScreen(this.addTaskCallback);
-
   @override
   Widget build(BuildContext context) {
     String? newTaskTitle;
@@ -92,7 +89,7 @@ class AddTasksScreen extends StatelessWidget {
                 radiusStyle: true,
                 onToggle: (index) {
                   // print(index);
-                  priority = index;
+                  priority = index!;
                 },
               ),
               SizedBox(
@@ -123,12 +120,9 @@ class AddTasksScreen extends StatelessWidget {
               SizedBox(height: 30.0),
               ConfirmationSlider(
                 onConfirmation: () {
-                  if (newTaskTitle == null) {
-                    Navigator.pop(context);
-                  } else {
-                    addTaskCallback(newTaskTitle, priority);
-                    // Navigator.pop(context);
-                  }
+                  Provider.of<TaskData>(context, listen: false)
+                      .addTask(newTaskTitle!, priority!);
+                  Navigator.pop(context);
                 },
                 backgroundColor: Color(0xff5a5a5a),
                 sliderButtonContent: Icon(Icons.arrow_forward),

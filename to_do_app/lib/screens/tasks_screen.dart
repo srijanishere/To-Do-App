@@ -1,16 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:to_do_app/widgets/task_list.dart';
 import 'package:to_do_app/screens/add_tasks_screen.dart';
-import 'package:to_do_app/models/task.dart';
+import 'package:to_do_app/models/task_data.dart';
+import 'package:provider/provider.dart';
 
-class TasksScreen extends StatefulWidget {
-  @override
-  State<TasksScreen> createState() => _TasksScreenState();
-}
-
-class _TasksScreenState extends State<TasksScreen> {
-  List<Task> tasks = [];
-
+class TasksScreen extends StatelessWidget {
   // Widget buildBottomSheet(BuildContext context) {
   @override
   Widget build(BuildContext context) {
@@ -53,29 +47,15 @@ class _TasksScreenState extends State<TasksScreen> {
                         //will allow us to create a new task
                         showModalBottomSheet(
                           context: context,
-                          builder: (context) => SingleChildScrollView(
-                            child: Container(
-                              padding: EdgeInsets.only(
-                                  bottom:
-                                      MediaQuery.of(context).viewInsets.bottom),
-                              child:
-                                  AddTasksScreen((newTaskTitle, taskPriority) {
-                                setState(() {
-                                  tasks.add(Task(
-                                      taskName: newTaskTitle,
-                                      priority: taskPriority));
-                                });
-                                Navigator.pop(context);
-                              }),
-                            ),
-                          ),
+                          builder: (context) => AddTasksScreen(),
                           // isScrollControlled: true, //to make the modal occupy the full screen
                         );
                       },
-                      backgroundColor: Colors.white,
+                      backgroundColor: Colors.black,
                       child: Icon(
-                        Icons.add,
-                        color: Color(0xff1d4c3d),
+                        Icons.assignment_add,
+                        color: Color(0xffc6e871),
+                        size: 25.0,
                       ),
                     ),
                   ],
@@ -84,7 +64,7 @@ class _TasksScreenState extends State<TasksScreen> {
                   height: 5.0,
                 ),
                 Text(
-                  "${tasks.length} Incomplete Tasks",
+                  "${Provider.of<TaskData>(context).taskCount} Incomplete Tasks",
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 18.0,
@@ -113,7 +93,7 @@ class _TasksScreenState extends State<TasksScreen> {
                   topRight: Radius.circular(20.0),
                 ),
               ),
-              child: (tasks.length == 0)
+              child: (Provider.of<TaskData>(context).taskCount == 0)
                   ? Center(
                       child: Text(
                         'NO TASKS YET',
@@ -124,7 +104,7 @@ class _TasksScreenState extends State<TasksScreen> {
                         ),
                       ),
                     )
-                  : TasksList(tasks: tasks),
+                  : TasksList(),
             ),
           ),
         ],
@@ -132,3 +112,13 @@ class _TasksScreenState extends State<TasksScreen> {
     );
   }
 }
+
+
+// SingleChildScrollView(
+//                             child: Container(
+//                               padding: EdgeInsets.only(
+//                                   bottom:
+//                                       MediaQuery.of(context).viewInsets.bottom),
+//                               child: AddTasksScreen(),
+//                             ),
+//                           )
