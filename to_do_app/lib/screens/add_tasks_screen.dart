@@ -2,13 +2,20 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:slide_to_confirm/slide_to_confirm.dart';
+import 'package:to_do_app/screens/tasks_screen.dart';
 import 'package:toggle_switch/toggle_switch.dart';
+import 'package:to_do_app/models/task.dart';
 
 class AddTasksScreen extends StatelessWidget {
-  const AddTasksScreen({Key? key}) : super(key: key);
+  final Function addTaskCallback;
+
+  AddTasksScreen(this.addTaskCallback);
 
   @override
   Widget build(BuildContext context) {
+    String? newTaskTitle;
+    int? priority;
+
     return Container(
       color: Color(
           0xff536a44), //takes the gray color of the background and helps in achieving the rounded border in the below container
@@ -83,12 +90,18 @@ class AddTasksScreen extends StatelessWidget {
                   ),
                 ],
                 radiusStyle: true,
-                onToggle: (index) {},
+                onToggle: (index) {
+                  print(index);
+                  priority = index;
+                },
               ),
               SizedBox(
                 height: 40.0,
               ),
               TextField(
+                onChanged: (newText) {
+                  newTaskTitle = newText;
+                },
                 autofocus: false,
                 textAlign: TextAlign.center,
                 cursorColor: Colors.black,
@@ -109,7 +122,9 @@ class AddTasksScreen extends StatelessWidget {
               ),
               SizedBox(height: 30.0),
               ConfirmationSlider(
-                onConfirmation: () {},
+                onConfirmation: () {
+                  addTaskCallback(newTaskTitle, priority);
+                },
                 backgroundColor: Color(0xff5a5a5a),
                 sliderButtonContent: Icon(Icons.arrow_forward),
                 backgroundColorEnd: Color(0xffd0f388),

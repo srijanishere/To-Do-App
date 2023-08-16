@@ -3,18 +3,15 @@ import 'package:to_do_app/widgets/task_tile.dart';
 import 'package:to_do_app/models/task.dart';
 
 class TasksList extends StatefulWidget {
+  final List<Task> tasks;
+
+  TasksList({required this.tasks});
+
   @override
   State<TasksList> createState() => _TasksListState();
 }
 
 class _TasksListState extends State<TasksList> {
-  List<Task> tasks = [
-    Task(taskName: 'Buy Milk'),
-    Task(taskName: 'Buy Sugar'),
-    Task(taskName: 'Buy Tea'),
-    Task(taskName: 'Buy Biscuits'),
-  ];
-
   // void sortList() {
   //   setState(() {
   //     tasks.sort((a, b) => a.taskName.compareTo(b.taskName));
@@ -29,16 +26,17 @@ class _TasksListState extends State<TasksList> {
     return ListView.builder(
       itemBuilder: (context, index) {
         return TaskTile(
-          isChecked: tasks[index].isDone,
-          taskTitle: tasks[index].taskName,
+          isChecked: widget.tasks[index].isDone,
+          taskTitle: widget.tasks[index].taskName,
+          priority: widget.tasks[index].priority,
           checkboxCallback: (bool? checkboxState) {
             setState(() {
-              tasks[index].toggleDone();
+              widget.tasks[index].toggleDone();
             });
           },
         );
       },
-      itemCount: tasks.length, //no.of tasks = length of tasks[]
+      itemCount: widget.tasks.length, //no.of tasks = length of tasks[]
     );
   }
 }

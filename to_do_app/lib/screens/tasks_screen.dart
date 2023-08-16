@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:to_do_app/widgets/task_list.dart';
 import 'package:to_do_app/screens/add_tasks_screen.dart';
+import 'package:to_do_app/models/task.dart';
 
-class TasksScreen extends StatelessWidget {
-  const TasksScreen({Key? key}) : super(key: key);
+class TasksScreen extends StatefulWidget {
+  @override
+  State<TasksScreen> createState() => _TasksScreenState();
+}
+
+class _TasksScreenState extends State<TasksScreen> {
+  List<Task> tasks = [
+    Task(taskName: 'Buy Milk', priority: 0),
+    Task(taskName: 'Buy Sugar', priority: 1),
+    Task(taskName: 'Buy Tea', priority: 1),
+  ];
 
   // Widget buildBottomSheet(BuildContext context) {
-  //   return Container(
-  //     child: Text('this is a bottom sheet'),
-  //     color: Colors.black,
-  //     height: 400.0,
-  //   );
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +29,12 @@ class TasksScreen extends StatelessWidget {
               child: Container(
                 padding: EdgeInsets.only(
                     bottom: MediaQuery.of(context).viewInsets.bottom),
-                child: AddTasksScreen(),
+                child: AddTasksScreen((newTaskTitle, taskPriority) {
+                  setState(() {
+                    tasks.add(
+                        Task(taskName: newTaskTitle, priority: taskPriority));
+                  });
+                }),
               ),
             ),
             // isScrollControlled: true, //to make the modal occupy the full screen
@@ -86,17 +94,18 @@ class TasksScreen extends StatelessWidget {
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                   colors: [
-                    Color(0xff72db80),
-                    Color(0xffc6f187),
-                    Color(0xffedfb8a),
+                    Color(0xff72db80), // 0xffb8ecbf
+                    Color(0xffC6F187), //  0xffcbefd0
+                    Color(0xffedfb8a), // 0xffdff1e3
                   ],
                 ),
+                // color: Color(0xffd7d3d3),
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(20.0),
                   topRight: Radius.circular(20.0),
                 ),
               ),
-              child: TasksList(),
+              child: TasksList(tasks: tasks),
             ),
           ),
         ],

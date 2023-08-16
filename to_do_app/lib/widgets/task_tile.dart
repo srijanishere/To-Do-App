@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 class TaskTile extends StatelessWidget {
   final bool isChecked;
   final String taskTitle;
+  final int? priority;
   final Function(bool?) checkboxCallback;
 
   TaskTile({
     required this.isChecked,
     required this.taskTitle,
+    required this.priority,
     required this.checkboxCallback,
   });
 
@@ -22,8 +24,8 @@ class TaskTile extends StatelessWidget {
       title: Row(
         children: [
           Icon(
-            Icons.circle_sharp,
-            color: Colors.green[600],
+            (Icons.circle_sharp),
+            color: (priority == 0) ? Colors.red[600] : Colors.green[500],
           ),
           SizedBox(
             width: 10.0,
