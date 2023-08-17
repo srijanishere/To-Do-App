@@ -23,4 +23,4 @@ A simple, easy-to-use application to track your daily tasks in an easy and conve
 
 <br>
 
-#### Keep contributing and send me feedbacks on how I can improve the app ✨
+#### Keep contributing and share your feedbacks on how to improve the app ✨
