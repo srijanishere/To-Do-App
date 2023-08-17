@@ -28,4 +28,9 @@ class TaskData extends ChangeNotifier {
     _tasks.remove(task);
     notifyListeners();
   }
+
+  void sortList() {
+    _tasks.sort((a, b) => a.priority.compareTo(b.priority));
+    notifyListeners();
+  }
 }

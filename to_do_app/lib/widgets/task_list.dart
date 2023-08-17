@@ -4,12 +4,6 @@ import 'package:provider/provider.dart';
 import 'package:to_do_app/models/task_data.dart';
 
 class TasksList extends StatelessWidget {
-  // void sortList() {
-  //   setState(() {
-  //     tasks.sort((a, b) => a.taskName.compareTo(b.taskName));
-  //   });
-  // }
-
   @override
   Widget build(BuildContext context) {
     //ListView.builder only builds the components of the list which is visible to the user on the screen

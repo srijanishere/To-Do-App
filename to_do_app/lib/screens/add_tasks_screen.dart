@@ -122,6 +122,7 @@ class AddTasksScreen extends StatelessWidget {
                 onConfirmation: () {
                   Provider.of<TaskData>(context, listen: false)
                       .addTask(newTaskTitle!, priority!);
+                  Provider.of<TaskData>(context, listen: false).sortList();
                   Navigator.pop(context);
                 },
                 backgroundColor: Color(0xff5a5a5a),
