@@ -14,10 +14,10 @@ A simple, easy-to-use application to track your daily tasks in an easy and conve
 ## Screenshots 📸
 <table>
   <tr>
-    <td><img src="/to_do_app/assets/screenshots/empty_task.png" alt="Empty Task Screen" width=200 height=400/></td>
-    <td><img src="/to_do_app/assets/screenshots/add_task(1).png" alt="Add Task Screen" width=200 height=400/></td>
-     <td><img src="/to_do_app/assets/screenshots/add_task(2).png" alt="Add Task Screen" width=200 height=400/></td>
-     <td><img src="/to_do_app/assets/screenshots/task_screen.png" alt="ask Screen" width=200 height=400/></td>
+    <td><img src="/to_do_app/assets/screenshots/empty_task.png" alt="Empty Task Screen" width=205 height=420/></td>
+    <td><img src="/to_do_app/assets/screenshots/add_task(1).png" alt="Add Task Screen" width=205 height=420/></td>
+     <td><img src="/to_do_app/assets/screenshots/add_task(2).png" alt="Add Task Screen" width=205 height=420/></td>
+     <td><img src="/to_do_app/assets/screenshots/task_screen.png" alt="ask Screen" width=205 height=420/></td>
   </tr>
 </table>
 
