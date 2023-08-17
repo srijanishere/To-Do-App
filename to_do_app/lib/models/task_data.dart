@@ -3,9 +3,7 @@ import 'package:to_do_app/models/task.dart';
 import 'dart:collection';
 
 class TaskData extends ChangeNotifier {
-  List<Task> _tasks = [
-    Task(taskName: "Buy coffee"),
-  ];
+  List<Task> _tasks = [];
 
   UnmodifiableListView<Task>? get tasks {
     return UnmodifiableListView(_tasks);
@@ -18,6 +16,16 @@ class TaskData extends ChangeNotifier {
   void addTask(String taskTitle, int priority) {
     final task = Task(taskName: taskTitle, priority: priority);
     _tasks.add(task);
+    notifyListeners();
+  }
+
+  void updateTask(Task task) {
+    task.toggleDone();
+    notifyListeners();
+  }
+
+  void deleteTask(Task task) {
+    _tasks.remove(task);
     notifyListeners();
   }
 }

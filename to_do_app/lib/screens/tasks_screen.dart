@@ -3,6 +3,7 @@ import 'package:to_do_app/widgets/task_list.dart';
 import 'package:to_do_app/screens/add_tasks_screen.dart';
 import 'package:to_do_app/models/task_data.dart';
 import 'package:provider/provider.dart';
+import 'package:to_do_app/screens/empty_task_screen.dart';
 
 class TasksScreen extends StatelessWidget {
   // Widget buildBottomSheet(BuildContext context) {
@@ -47,7 +48,14 @@ class TasksScreen extends StatelessWidget {
                         //will allow us to create a new task
                         showModalBottomSheet(
                           context: context,
-                          builder: (context) => AddTasksScreen(),
+                          builder: (context) => SingleChildScrollView(
+                            child: Container(
+                              padding: EdgeInsets.only(
+                                  bottom:
+                                      MediaQuery.of(context).viewInsets.bottom),
+                              child: AddTasksScreen(),
+                            ),
+                          ),
                           // isScrollControlled: true, //to make the modal occupy the full screen
                         );
                       },
@@ -94,16 +102,7 @@ class TasksScreen extends StatelessWidget {
                 ),
               ),
               child: (Provider.of<TaskData>(context).taskCount == 0)
-                  ? Center(
-                      child: Text(
-                        'NO TASKS YET',
-                        style: TextStyle(
-                          fontSize: 24.0,
-                          fontWeight: FontWeight.w900,
-                          color: Color(0xff1d4c3d),
-                        ),
-                      ),
-                    )
+                  ? EmptyTaskScreen()
                   : TasksList(),
             ),
           ),
@@ -112,13 +111,3 @@ class TasksScreen extends StatelessWidget {
     );
   }
 }
-
-
-// SingleChildScrollView(
-//                             child: Container(
-//                               padding: EdgeInsets.only(
-//                                   bottom:
-//                                       MediaQuery.of(context).viewInsets.bottom),
-//                               child: AddTasksScreen(),
-//                             ),
-//                           )
