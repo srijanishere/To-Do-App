@@ -120,10 +120,14 @@ class AddTasksScreen extends StatelessWidget {
               SizedBox(height: 30.0),
               ConfirmationSlider(
                 onConfirmation: () {
-                  Provider.of<TaskData>(context, listen: false)
-                      .addTask(newTaskTitle!, priority!);
-                  Provider.of<TaskData>(context, listen: false).sortList();
-                  Navigator.pop(context);
+                  if (newTaskTitle == null) {
+                    Navigator.pop(context);
+                  } else {
+                    Provider.of<TaskData>(context, listen: false)
+                        .addTask(newTaskTitle!, priority!);
+                    Provider.of<TaskData>(context, listen: false).sortList();
+                    Navigator.pop(context);
+                  }
                 },
                 backgroundColor: Color(0xff5a5a5a),
                 sliderButtonContent: Icon(Icons.arrow_forward),
